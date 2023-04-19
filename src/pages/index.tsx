@@ -1,9 +1,13 @@
 import Image from 'next/image'
 import { Inter } from 'next/font/google'
 
+import Layout from '@/components/Layout'
+import type { ReactElement } from 'react'
+import type { NextPageWithLayout } from './_app'
+
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+const Home: NextPageWithLayout = () => {
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
@@ -55,9 +59,7 @@ export default function Home() {
               -&gt;
             </span>
           </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
-          >
+          <p className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}>
             Find in-depth information about Next.js features and API.
           </p>
         </a>
@@ -74,9 +76,7 @@ export default function Home() {
               -&gt;
             </span>
           </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
-          >
+          <p className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}>
             Learn about Next.js in an interactive course with&nbsp;quizzes!
           </p>
         </a>
@@ -93,9 +93,7 @@ export default function Home() {
               -&gt;
             </span>
           </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
-          >
+          <p className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}>
             Discover and deploy boilerplate example Next.js&nbsp;projects.
           </p>
         </a>
@@ -112,13 +110,17 @@ export default function Home() {
               -&gt;
             </span>
           </h2>
-          <p
-            className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}
-          >
+          <p className={`${inter.className} m-0 max-w-[30ch] text-sm opacity-50`}>
             Instantly deploy your Next.js site to a shareable URL with Vercel.
           </p>
         </a>
       </div>
     </main>
   )
+}
+
+export default Home
+
+Home.getLayout = function getLayout(page: ReactElement) {
+  return <Layout>{page}</Layout>
 }
